@@ -1,51 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>非常好玩不浪费时间的好游戏</title>
-    <style>
-        *{
-            padding: 0;
-            margin: 0;
-        }
-        *::selection{
-            appearance: none;
-        }
-        html,body{
-            height: 100%;
-            background-color: lightgreen;
-        }
-        .click{
-            opacity: 1;
-            width: 100%;
-            height: 100%;
-            position: relative;
-            font-size: 350px;
-        }
-        .click:active{
-            opacity: 0.8;
-            font-size: 300px;
-        }
-        span{
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            font-size: 100px;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>够直不够硬</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="click" id="c">骚缸</div>
-    <span id="s">0</span>
-    <script>
-        var i = 0;
-        var c = document.getElementById('c');
-        c.addEventListener('click',function(){
-            i++;
-            document.getElementById('s').innerHTML = i;
-        })
 
-    </script>
+<canvas id='canvas' width=100% height=100%>
+</canvas>
+    <div class="info-bar" id="hpBar">
+        <span id="hp">100</span>
+    </div>
+    <div class="info-bar" id="expBar">
+        <span id="exp">100</span>
+    </div>
+    <span id="level"></span>
+    <span id="score"></span>
+    <audio src="js/up.mp3" id="win" preload="auto" hidden></audio>
+    <audio src="js/lose.mp3" id="lose" preload="auto" hidden></audio>
+    <audio src="js/hp.mp3" id="loseHP" preload="auto" hidden></audio>
+    <audio src="js/start.mp3" id="start" preload="auto" hidden></audio>
+<script src="js/jq.min.js"></script>
+<script src="js/script.js"></script>
+
 </body>
 </html>
