@@ -14,14 +14,14 @@ canvas {background:#ecf0f1;}
     height: 10%;
     border-radius: 20px;
     z-index: 10000;
-    font-size: 20px;
+    font-size: 100px;
     font-family: ttx;
     color: white;
     position: relative;
     left: 0;
     bottom: 0;
     transition: ease .1s;
-    text-align: left;
+    text-align: center;
 }
 .info-bar>#hp{
     position: fixed;

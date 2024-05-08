@@ -23,10 +23,11 @@
 
 		var hp = 100,
 			exp = 1,
-			level = 1,
+			level = 18,
 			speed = 10,
-			needAI = false,
+			needAI = true,
 			loseTime = 0,
+
 			score = 0;
 		var up = document.getElementById('win'),
 			die = document.getElementById('lose'),
@@ -118,8 +119,8 @@ function Enemy() {
 	this.dis = Math.random()*1920+1080;
 	this.x=stage.w/2-Math.sin(this.r)*this.dis;
 	this.y=stage.h-Math.cos(this.r)*this.dis;
-	exp+=1;
-	updateExp(exp);
+	if(hp>=100){exp++;updateExp(exp)}
+	else{hp++;updateHp(hp)}
 	score+=50;
 }
 for(var i=0;i<10;i++) {
@@ -225,11 +226,10 @@ function enginestep() {
 
 		cold.sort();
 		eturn = parseInt(cold[0].slice(8,11));
-		if (parseInt(cold[0].slice(1,6))<800) {
-			angle += (enemies[eturn].r-angle)/8;
+		if (parseInt(cold[0].slice(1,6))<1920) {
+			angle += (enemies[eturn].r-angle)/3;
 		}
 	} else {
-
 		var dx = pointer.x-stage.w/2;
 		var dy = pointer.y-stage.h;
 		angle = Math.atan(dx/dy);
@@ -438,6 +438,8 @@ function lose(){
 	alert("该罚！分数为：" + score + " " + "所在关卡：" + level);	
 	hp = 100;
 	exp = 1;
+	updateHp(hp);
+	updateExp(exp);
 	level = 1;
 	score = 0;
 	loseTime++;
@@ -480,7 +482,7 @@ setInterval(function(){
 	document.getElementById('score').innerHTML = "Score :" + score;
 	if(hp<0){lose()}
 	else if(hp>100){hp=100}
-	else if(exp>=100){hp+=20;exp=0;level++;up.play()}
+	else if(hp==100&&exp>=100){exp=0;level++;up.play()}
 	else if(level==1){speed=1;document.getElementById('level').innerHTML = "Level : 1"}
 	else if(level==2){speed=5;document.getElementById('level').innerHTML = "Level : 2"}
 	else if(level==3){speed=10;document.getElementById('level').innerHTML = "Level : 3"}
@@ -509,7 +511,7 @@ setInterval(function(){
 		}else{lose()}}
 	else if(level==18){
 		setInterval(function(){
-			var randomSpeed = Random(5,20);
+			var randomSpeed = Random(1,10);
 			speed = randomSpeed;
 		},300)
 		document.getElementById('level').innerHTML = "Level : 放松关卡(18)";
@@ -523,7 +525,7 @@ setInterval(function(){
 		}else{lose()}}
 	else if(level==20){
 		setInterval(function(){
-			var randomSpeed = Random(30,60);
+			var randomSpeed = Random(50,100);
 			speed = randomSpeed;
 		},300)
 		document.getElementById('level'.innerHTML = "Level : 几近崩溃(20)")
