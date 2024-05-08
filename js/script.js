@@ -23,7 +23,7 @@
 
 		var hp = 100,
 			exp = 1,
-			level = 18,
+			level = 1,
 			speed = 10,
 			needAI = true,
 			loseTime = 0,
