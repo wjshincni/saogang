@@ -25,7 +25,7 @@
 			exp = 1,
 			level = 1,
 			speed = 10,
-			needAI = true,
+			needAI = false,
 			loseTime = 0,
 
 			score = 0;
